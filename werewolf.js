@@ -10,7 +10,10 @@ const werWoelfeVonDuesterNacht = [
   new Role('Werewolf', Team.werewolves),
   new Role('Seer', Team.villagers, new Mechanics('daily', () => {
     const player = choosePlayer();
-    console.log(player.role)
+    console.log(player.role);
+  })),
+  new Role('Witch', Team.villagers, new Mechanics('daily', () => {
+    
   }))
 ];
 
@@ -25,7 +28,6 @@ export class Werewolf {
   }
 
   start() {
-    this.players['Sandro']
     // TODO
   }
 
@@ -63,8 +65,9 @@ class Mechanics {
    * @param {'never'|'firstNight'|'daily'} awakes 
    * @param {() => void} onAwake 
    * @param {(causeOfDeath: CauseOfDeath) => void} onDeath 
+   * @param {}
    */
-  constructor(awakes, onAwake, onDeath) {
+  constructor(awakes, onAwake, onDeath, oneTime) {
     this.awakes = awakes;
     this.onAwake = onAwake;
     this.onDeath = onDeath;
